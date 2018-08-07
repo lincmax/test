@@ -54,5 +54,10 @@ pipeline {
         }
       }
     }
+    stage('Dry-Run (offline)') {
+      steps {
+        echo 'Test in offline'
+      }
+    }
   }
 }
