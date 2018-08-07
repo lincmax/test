@@ -25,5 +25,10 @@ pipeline {
         }
       }
     }
+    stage('Smoke Test') {
+      steps {
+        echo 'Smoke test for he build validation'
+      }
+    }
   }
 }
