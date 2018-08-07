@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('BVT') {
+    stage('Env. Check') {
       parallel {
         stage('Welcome') {
           steps {
@@ -14,7 +14,7 @@ pipeline {
 '''
           }
         }
-        stage('') {
+        stage('error') {
           steps {
             sh '''echo "build success!"
 '''
