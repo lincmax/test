@@ -66,6 +66,11 @@ pipeline {
             echo 'work w/ twillo, bandidth'
           }
         }
+        stage('Logs observed') {
+          steps {
+            echo 'resource consuming observation'
+          }
+        }
       }
     }
   }
