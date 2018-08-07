@@ -11,6 +11,7 @@ pipeline {
         stage('D/L or git clone src code') {
           steps {
             sh '''cd ~/linc/prox2
+git fetch -a
 git checkout dragon_over_blue_ocean
 git pull origin dradon_over_blue_ocean
 echo "git clone ..."'''
