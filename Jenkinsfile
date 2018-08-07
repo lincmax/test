@@ -66,7 +66,7 @@ pipeline {
             echo 'work w/ twillo, bandidth'
           }
         }
-        stage('Logs observed') {
+        stage('Logs observation') {
           steps {
             echo 'resource consuming observation'
           }
