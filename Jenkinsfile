@@ -35,5 +35,10 @@ pipeline {
         echo 'Basic Test Suite'
       }
     }
+    stage('System Test') {
+      steps {
+        echo 'system test under lab environment'
+      }
+    }
   }
 }
