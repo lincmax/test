@@ -17,7 +17,7 @@ git pull origin hackathon_dragon_over_blue_ocean
 echo "Build prox2 done!"'''
           }
         }
-        stage('') {
+        stage('Build Ecare-UI') {
           steps {
             sh '''cd ~/linc/ecare-ui
 git fetch -a
