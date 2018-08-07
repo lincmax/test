@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('home') {
+    stage('Prep') {
       steps {
-        echo 'Welcome to Max\'s Blue Ocean'
+        echo 'Welcome!'
       }
     }
   }
