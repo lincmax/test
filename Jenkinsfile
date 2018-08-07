@@ -46,11 +46,6 @@ pipeline {
     }
     stage('Dry-Run (offline)') {
       parallel {
-        stage('Dry-Run (offline)') {
-          steps {
-            echo 'Test in offline'
-          }
-        }
         stage('Interoperability Test') {
           steps {
             echo 'work w/ twillo, bandidth'
