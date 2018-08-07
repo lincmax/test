@@ -18,6 +18,11 @@ pipeline {
             sh 'echo "git clone ..."'
           }
         }
+        stage('Start building') {
+          steps {
+            echo 'start build process...'
+          }
+        }
       }
     }
   }
