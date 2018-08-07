@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Build Making') {
       parallel {
-        stage('D/L or git clone src code') {
+        stage('Build Prox2') {
           steps {
             sh '''cd ~/linc/prox2
 git fetch -a
@@ -17,7 +17,7 @@ git pull origin hackathon_dragon_over_blue_ocean
 echo "git pull done!"'''
           }
         }
-        stage('Start building') {
+        stage('Build Ecare-UI') {
           steps {
             echo 'start build process...'
           }
