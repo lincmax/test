@@ -73,5 +73,10 @@ pipeline {
         }
       }
     }
+    stage('Go live (online)') {
+      steps {
+        echo 'Announcement'
+      }
+    }
   }
 }
