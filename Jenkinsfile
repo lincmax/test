@@ -3,9 +3,9 @@ pipeline {
   stages {
     stage('Env. Check') {
       parallel {
-        stage('Welcome') {
+        stage('Resource check') {
           steps {
-            echo 'Welcome!'
+            echo 'Check disk capacity is enough'
           }
         }
         stage('Env Check') {
