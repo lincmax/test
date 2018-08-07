@@ -8,11 +8,6 @@ pipeline {
     }
     stage('Build Making') {
       parallel {
-        stage('Build Making') {
-          steps {
-            echo 'D/L or git clone source code'
-          }
-        }
         stage('D/L or git clone src code') {
           steps {
             sh 'echo "git clone ..."'
@@ -37,17 +32,12 @@ pipeline {
     }
     stage('System Test') {
       parallel {
-        stage('System Test') {
-          steps {
-            echo 'system test under lab environment'
-          }
-        }
         stage('Function Test') {
           steps {
             echo 'Fulle function test suite'
           }
         }
-        stage('Stress Test2') {
+        stage('Stress Test') {
           steps {
             echo 'Stability Test..."'
           }
