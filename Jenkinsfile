@@ -47,6 +47,11 @@ pipeline {
             echo 'Fulle function test suite'
           }
         }
+        stage('Stress Test') {
+          steps {
+            echo 'Stability Test..."'
+          }
+        }
       }
     }
   }
