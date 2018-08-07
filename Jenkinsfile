@@ -30,5 +30,10 @@ pipeline {
         echo 'Smoke test for he build validation'
       }
     }
+    stage('Sanity Test') {
+      steps {
+        echo 'Basic Test Suite'
+      }
+    }
   }
 }
