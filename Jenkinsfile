@@ -47,7 +47,7 @@ pipeline {
             echo 'Fulle function test suite'
           }
         }
-        stage('Stress Test') {
+        stage('Stress Test2') {
           steps {
             echo 'Stability Test..."'
           }
