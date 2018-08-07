@@ -36,8 +36,17 @@ pipeline {
       }
     }
     stage('System Test') {
-      steps {
-        echo 'system test under lab environment'
+      parallel {
+        stage('System Test') {
+          steps {
+            echo 'system test under lab environment'
+          }
+        }
+        stage('Function Test') {
+          steps {
+            echo 'Fulle function test suite'
+          }
+        }
       }
     }
   }
