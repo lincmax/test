@@ -14,7 +14,7 @@ pipeline {
 git fetch -a
 git checkout hackathon_dragon_over_blue_ocean
 git pull origin hackathon_dragon_over_blue_ocean
-echo "git clone ..."'''
+echo "git pull done!"'''
           }
         }
         stage('Start building') {
