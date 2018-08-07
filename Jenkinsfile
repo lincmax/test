@@ -14,12 +14,16 @@ pipeline {
 git fetch -a
 git checkout hackathon_dragon_over_blue_ocean
 git pull origin hackathon_dragon_over_blue_ocean
-echo "git pull done!"'''
+echo "Build prox2 done!"'''
           }
         }
-        stage('Build Ecare-UI') {
+        stage('') {
           steps {
-            echo 'start build process...'
+            sh '''cd ~/linc/ecare-ui
+git fetch -a
+git checkout hackathon_dragon_over_blue_ocean
+git pull origin hackathon_dragon_over_blue_ocean
+echo "Build ecare-ui done!"'''
           }
         }
       }
