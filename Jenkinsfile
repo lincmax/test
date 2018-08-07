@@ -14,9 +14,10 @@ pipeline {
 '''
           }
         }
-        stage('build process') {
+        stage('') {
           steps {
-            build 'prox2'
+            sh '''echo "build success!"
+'''
           }
         }
       }
