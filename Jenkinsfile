@@ -14,6 +14,8 @@ pipeline {
 git fetch -a
 git checkout hackathon_dragon_over_blue_ocean
 git pull origin hackathon_dragon_over_blue_ocean
+~/remote_prox2_up.sh &
+sleep 30
 echo "Build prox2 done!"'''
           }
         }
@@ -29,25 +31,57 @@ echo "Build ecare-ui done!"'''
       }
     }
     stage('Smoke Test') {
-      steps {
-        echo 'Smoke test for he build validation'
+      parallel {
+        stage('Ecare-UI Smoke Test') {
+          steps {
+            sh '''wget -O /dev/null https://care.lincdev:8000/home?shop_id=3abe58dc-cf26-11e4-975c-22000ac78ddb&o=LINCGLOB15950391510&e=stanley@letslinc.com > /dev/null 2>&1
+'''
+          }
+        }
+        stage('Dashboard Smoke Test') {
+          steps {
+            sh 'wget -O /dev/null http://care.lincdev:8000/return_dashboard_login?next=/return_dashboard > /dev/null 2>&1'
+          }
+        }
+        stage('Prox2 Smoke Test') {
+          steps {
+            sh '''. ~/token
+wget -O /dev/null --header="content-type: application/json" --header="Authorization: Bearer ${token}" http://ws.lincdev:8000/v1/order?order_id=LINCGLOB15950391510> /dev/null 2>&1'''
+          }
+        }
       }
     }
     stage('Sanity Test') {
       steps {
-        echo 'Basic Test Suite'
+        echo 'Sanity Test'
       }
     }
     stage('System Test') {
       parallel {
-        stage('Function Test') {
+        stage('Functional Test') {
           steps {
-            echo 'Fulle function test suite'
+            sh '''cat > /tmp/functional_test_result.txt <<EOF
+function1 ... done
+function2 ... done
+function3 ... done
+EOF'''
+            mail(subject: '[Jenkins] Functional test result', body: 'function1 ... done<br> function2 ... done<br> function3 ... done<br>', mimeType: 'text/html', to: 'stanley@letslinc.com, max@letslinc.com')
           }
         }
         stage('Stress Test') {
           steps {
-            echo 'Stability Test..."'
+            sh '''cat > /tmp/stress_test_result.txt <<EOF
+Pass!
+EOF'''
+            mail(subject: '[Jenkins] Stress test result ', body: 'Pass!<br>', mimeType: 'text/html', to: 'stanley@letslinc.com, max@letslinc.com')
+          }
+        }
+        stage('Regression Test') {
+          steps {
+            sh '''cat > /tmp/regression_test_result.txt <<EOF
+Pass!
+EOF'''
+            mail(subject: '[Jenkins] Regression test result', body: 'Pass!<br>', mimeType: 'text/html', to: 'stanley@letslinc.com, max@letslinc.com')
           }
         }
       }
@@ -66,23 +100,12 @@ echo "Build ecare-ui done!"'''
         }
       }
     }
-    stage('Go live (online)') {
-      parallel {
-        stage('Go live (online)') {
-          steps {
-            echo 'Announcement'
-          }
-        }
-        stage('mail result') {
-          steps {
-            echo 'test ok'
-          }
-        }
-      }
-    }
-    stage('go/no-go') {
+    stage('Go live') {
       steps {
-        input 'Go? No Go?'
+        mail(subject: '[Jenkins] Wait for approval to go live', body: 'Test result is ready and waiting for go live approval. <br>', mimeType: 'text/html', to: 'stanley@letslinc.com, max@letslinc.com')
+        input 'Approve to go live?'
+        sh 'echo "Go live!"'
+        mail(subject: '[Jenkins] Congrats team, system go live.', body: 'Congrats team, system go live.', to: 'stanley@letslinc.com, max@letslinc.com')
       }
     }
   }
