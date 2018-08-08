@@ -61,7 +61,7 @@ function1 ... done
 function2 ... done
 function3 ... done
 EOF'''
-            mail(subject: '[Jenkins] Functional test result', body: 'function1 ... done<br> function2 ... done<br> function3 ... done<br>', mimeType: 'text/html', to: 'stanley@letslinc.com, max@letslinc.com')
+            mail(subject: '[Jenkins] Functional test result', body: 'function1 ... done<br> function2 ... done<br> function3 ... done<br>', mimeType: 'text/html', to: 'max@letslinc.com')
           }
         }
         stage('Stress Test') {
@@ -69,7 +69,7 @@ EOF'''
             sh '''cat > /tmp/stress_test_result.txt <<EOF
 Pass!
 EOF'''
-            mail(subject: '[Jenkins] Stress test result ', body: 'Pass!<br>', mimeType: 'text/html', to: 'stanley@letslinc.com, max@letslinc.com')
+            mail(subject: '[Jenkins] Stress test result ', body: 'Pass!<br>', mimeType: 'text/html', to: 'max@letslinc.com')
           }
         }
         stage('Regression Test') {
@@ -77,7 +77,7 @@ EOF'''
             sh '''cat > /tmp/regression_test_result.txt <<EOF
 Pass!
 EOF'''
-            mail(subject: '[Jenkins] Regression test result', body: 'Pass!<br>', mimeType: 'text/html', to: 'stanley@letslinc.com, max@letslinc.com')
+            mail(subject: '[Jenkins] Regression test result', body: 'Pass!<br>', mimeType: 'text/html', to: 'max@letslinc.com')
           }
         }
       }
@@ -101,7 +101,7 @@ EOF'''
         mail(subject: '[Jenkins] Wait for approval to go live', body: 'Test result is ready and waiting for go live approval. <br>', mimeType: 'text/html', to: 'stanley@letslinc.com, max@letslinc.com')
         input 'Approve to go live?'
         sh 'echo "Go live!"'
-        mail(subject: '[Jenkins] Congrats team, system go live.', body: 'Congrats team, system go live.', to: 'stanley@letslinc.com, max@letslinc.com')
+        mail(subject: '[Jenkins] Congrats team, system go live.', body: 'Congrats team, system go live.', to: 'max@letslinc.com')
       }
     }
   }
