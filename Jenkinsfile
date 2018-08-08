@@ -38,11 +38,6 @@ echo "Build ecare-ui done!"'''
 '''
           }
         }
-        stage('Dashboard Smoke Test') {
-          steps {
-            sh 'wget -O /dev/null http://care.lincdev:8000/return_dashboard_login?next=/return_dashboard > /dev/null 2>&1'
-          }
-        }
         stage('Prox2 Smoke Test') {
           steps {
             sh '''. ~/token
