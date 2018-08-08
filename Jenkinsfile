@@ -41,7 +41,7 @@ echo "Build ecare-ui done!"'''
         stage('Prox2 Smoke Test') {
           steps {
             sh '''. ~/token
-wget -O /dev/null --header="content-type: application/json" --header="Authorization: Bearer ${token}" http://ws.lincdev:8000/v1/order?order_id=LINCGLOB15950391510> /dev/null 2>&1'''
+wget -O /dev/null --header="content-type: application/json" --header="Authorization: Bearer ${token}" http://ws.lincdev:8000/v1/order?order_id=LINCGLOB46134184> /dev/null 2>&1'''
           }
         }
       }
