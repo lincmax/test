@@ -67,8 +67,22 @@ echo "Build ecare-ui done!"'''
       }
     }
     stage('Go live (online)') {
+      parallel {
+        stage('Go live (online)') {
+          steps {
+            echo 'Announcement'
+          }
+        }
+        stage('mail result') {
+          steps {
+            echo 'test ok'
+          }
+        }
+      }
+    }
+    stage('go/no-go') {
       steps {
-        echo 'Announcement'
+        input 'Go? No Go?'
       }
     }
   }
